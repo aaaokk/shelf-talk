@@ -6,9 +6,7 @@
 <title>進撃の巨人 | SHELF TALK</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -76,13 +74,54 @@ h1 {
 }
 
 .comment p {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   line-height: 1.7;
 }
 
-.like {
-  color: #aaa;
-  font-size: 13px;
+.nickname {
+  color: #c084fc;
+  font-weight: bold;
+}
+
+.form {
+  background: #171720;
+  border: 1px solid #33263d;
+  border-radius: 15px;
+  padding: 18px;
+  margin-top: 15px;
+}
+
+input, textarea {
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #493954;
+  background: #0f0f16;
+  color: white;
+  font-size: 15px;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  border-radius: 10px;
+  background: #a855f7;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.message {
+  margin-top: 12px;
+  color: #bdb5c5;
 }
 
 .recommend {
@@ -90,19 +129,6 @@ h1 {
   border-radius: 15px;
   padding: 18px;
   margin-top: 12px;
-}
-
-.write {
-  display: block;
-  width: 100%;
-  margin-top: 30px;
-  padding: 16px;
-  border: 0;
-  border-radius: 12px;
-  background: #a855f7;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
 }
 </style>
 </head>
@@ -128,20 +154,26 @@ h1 {
   <div class="section">
     <h2>💬 みんなの感想</h2>
 
-    <div class="comment">
-      <p>
-        最初は謎だらけだったけど、読み進めるほど
-        世界観に引き込まれた！
-      </p>
-      <div class="like">❤️ 12</div>
+    <div id="comments">
+      読み込み中……
     </div>
+  </div>
 
-    <div class="comment">
-      <p>
-        好きなキャラクターについて語りたい。
-        何度も読み返したくなる作品。
-      </p>
-      <div class="like">❤️ 8</div>
+  <div class="section">
+    <h2>✍️ 感想を書く</h2>
+
+    <div class="form">
+
+      <label>ニックネーム</label>
+      <input id="nickname" type="text" placeholder="例：たろう">
+
+      <label>感想</label>
+      <textarea id="content" placeholder="この作品の好きなところを書いてみよう！"></textarea>
+
+      <button onclick="postComment()">投稿する</button>
+
+      <div id="message" class="message"></div>
+
     </div>
   </div>
 
@@ -159,11 +191,89 @@ h1 {
     </div>
   </div>
 
-  <button class="write" onclick="alert('感想投稿機能は次のステップで追加します！')">
-    ✍️ 感想を書く
-  </button>
-
 </main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://jefjskatbpylokxraznx.supabase.co";
+const SUPABASE_KEY = "sb_publishable_7_jtLsbdfK6ns1HETOMcmQ_dmJutsbL";
+
+const supabaseClient = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+async function loadComments() {
+
+  const { data, error } = await supabaseClient
+    .from("comments")
+    .select("*")
+    .eq("work", "進撃の巨人")
+    .order("id", { ascending: false });
+
+  const area = document.getElementById("comments");
+
+  if (error) {
+    area.innerHTML = "感想を読み込めませんでした。";
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    area.innerHTML = "まだ感想はありません。最初の感想を書いてみよう！";
+    return;
+  }
+
+  area.innerHTML = data.map(comment => `
+    <div class="comment">
+      <div class="nickname">👤 ${escapeHtml(comment.nickname)}</div>
+      <p>${escapeHtml(comment.content)}</p>
+    </div>
+  `).join("");
+}
+
+async function postComment() {
+
+  const nickname = document.getElementById("nickname").value.trim();
+  const content = document.getElementById("content").value.trim();
+  const message = document.getElementById("message");
+
+  if (!nickname || !content) {
+    message.textContent = "ニックネームと感想を入力してください。";
+    return;
+  }
+
+  message.textContent = "投稿中……";
+
+  const { error } = await supabaseClient
+    .from("comments")
+    .insert({
+      nickname: nickname,
+      content: content,
+      work: "進撃の巨人"
+    });
+
+  if (error) {
+    message.textContent = "投稿できませんでした。";
+    return;
+  }
+
+  document.getElementById("nickname").value = "";
+  document.getElementById("content").value = "";
+
+  message.textContent = "投稿しました！🎉";
+
+  loadComments();
+}
+
+function escapeHtml(text) {
+  const div = document.createElement("div");
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+loadComments();
+</script>
 
 </body>
 </html>
