@@ -57,6 +57,8 @@ h1 {
   margin: 15px 0 25px;
 }
 
+/* セクション */
+
 .section {
   margin-top: 30px;
 }
@@ -68,87 +70,137 @@ h1 {
 /* 思い出カード */
 
 .memory {
-  background: #171720;
+  background: linear-gradient(
+    145deg,
+    #191720,
+    #14131b
+  );
+
   border: 1px solid #33263d;
-  border-radius: 15px;
-  padding: 18px;
-  margin: 12px 0;
+
+  border-radius: 18px;
+
+  padding: 22px;
+
+  margin: 16px 0;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.18);
 }
 
 .memory-meta {
   color: #e8dff0;
-  font-size: 15px;
+
+  font-size: 18px;
+
   font-weight: bold;
-  line-height: 1.7;
+
   margin-bottom: 10px;
 }
 
 .memory-detail {
   color: #bdb5c5;
-  font-size: 14px;
+
+  font-size: 15px;
+
   line-height: 1.8;
-  margin-bottom: 10px;
+
+  margin-bottom: 15px;
 }
 
 .memory-content {
-  margin: 12px 0 0;
-  padding-top: 12px;
+  margin: 15px 0 0;
+
+  padding-top: 15px;
+
   border-top: 1px solid #33263d;
-  line-height: 1.7;
+
+  line-height: 1.9;
+
   color: #fff;
+
+  font-size: 15px;
 }
 
 .nickname {
   color: #c084fc;
-  font-weight: bold;
+
   font-size: 13px;
-  margin-top: 10px;
+
+  margin-top: 16px;
+
+  text-align: right;
 }
+
 
 /* フォーム */
 
 .form {
   background: #171720;
+
   border: 1px solid #33263d;
+
   border-radius: 15px;
+
   padding: 18px;
+
   margin-top: 15px;
 }
 
 .form label {
   display: block;
+
   margin-top: 5px;
+
   font-size: 14px;
+
   color: #d9d1df;
 }
 
 input,
 textarea {
   width: 100%;
+
   margin-top: 8px;
+
   margin-bottom: 15px;
+
   padding: 12px;
+
   border-radius: 10px;
+
   border: 1px solid #493954;
+
   background: #0f0f16;
+
   color: white;
+
   font-size: 15px;
 }
 
 textarea {
   min-height: 100px;
+
   resize: vertical;
 }
 
 button {
   width: 100%;
+
   padding: 14px;
+
   border: 0;
+
   border-radius: 10px;
+
   background: #a855f7;
+
   color: white;
+
   font-size: 16px;
+
   font-weight: bold;
+
   cursor: pointer;
 }
 
@@ -158,138 +210,260 @@ button:hover {
 
 .message {
   margin-top: 12px;
+
   color: #bdb5c5;
 }
 
 .empty {
   background: #171720;
+
   border: 1px solid #33263d;
+
   border-radius: 15px;
+
   padding: 20px;
+
   color: #bdb5c5;
+
   line-height: 1.7;
 }
+
 
 /* おすすめ */
 
 .recommend {
-  background: linear-gradient(145deg, #21172b, #171720);
+  background:
+    linear-gradient(
+      145deg,
+      #21172b,
+      #171720
+    );
+
   border-radius: 15px;
+
   padding: 18px;
+
   margin-top: 12px;
 }
+
 </style>
 </head>
+
 
 <body>
 
 <header>
-  <a class="back" href="index.html">← 作品一覧へ戻る</a>
+
+  <a
+    class="back"
+    href="index.html"
+  >
+    ← 作品一覧へ戻る
+  </a>
+
 </header>
+
 
 <main>
 
-  <div class="work-icon">⚔️</div>
 
-  <span class="tag">漫画</span>
+  <div class="work-icon">
+    ⚔️
+  </div>
 
-  <h1>進撃の巨人</h1>
 
-  <div class="rating" id="memoryCount">
+  <span class="tag">
+    漫画
+  </span>
+
+
+  <h1>
+    進撃の巨人
+  </h1>
+
+
+  <div
+    class="rating"
+    id="memoryCount"
+  >
     🕰️ 思い出を読み込み中…
   </div>
+
+
 
   <!-- みんなの思い出 -->
 
   <div class="section">
-    <h2>🕰️ みんなの思い出</h2>
+
+    <h2>
+      みんなの思い出
+    </h2>
+
 
     <div id="comments">
       読み込み中……
     </div>
+
   </div>
+
+
 
   <!-- 思い出を投稿 -->
 
   <div class="section">
-    <h2>✍️ あなたの思い出を残す</h2>
+
+    <h2>
+      ✍️ あなたの思い出を残す
+    </h2>
+
 
     <div class="form">
 
-      <label>ニックネーム</label>
+
+      <label>
+        ニックネーム
+      </label>
+
       <input
         id="nickname"
         type="text"
         placeholder="例：たろう"
       >
 
-      <label>いつ？</label>
+
+
+      <label>
+        いつ？
+      </label>
+
       <input
         id="when_text"
         type="text"
         placeholder="例：2014年、高校生のころ"
       >
 
-      <label>どこで？</label>
+
+
+      <label>
+        どこで？
+      </label>
+
       <input
         id="where_text"
         type="text"
         placeholder="例：自分の部屋"
       >
 
-      <label>誰と？</label>
+
+
+      <label>
+        誰と？
+      </label>
+
       <input
         id="with_who"
         type="text"
         placeholder="例：友達と"
       >
 
-      <label>ひとこと（任意）</label>
+
+
+      <label>
+        ひとこと（任意）
+      </label>
+
       <textarea
         id="content"
         placeholder="そのときのことを少しだけ。"
       ></textarea>
 
-      <button onclick="postMemory()">
+
+
+      <button
+        onclick="postMemory()"
+      >
         思い出を残す
       </button>
 
-      <div id="message" class="message"></div>
+
+      <div
+        id="message"
+        class="message"
+      ></div>
+
 
     </div>
+
   </div>
+
+
 
   <!-- おすすめ -->
 
   <div class="section">
-    <h2>🔥 この作品が好きなら？</h2>
+
+    <h2>
+      🔥 この作品が好きなら？
+    </h2>
+
 
     <div class="recommend">
-      <strong>HUNTER×HUNTER</strong><br>
-      <span>世界観や伏線が好きな人におすすめ。</span>
+
+      <strong>
+        HUNTER×HUNTER
+      </strong>
+
+      <br>
+
+      <span>
+        世界観や伏線が好きな人におすすめ。
+      </span>
+
     </div>
 
+
     <div class="recommend">
-      <strong>鋼の錬金術師</strong><br>
-      <span>物語をじっくり楽しみたい人に。</span>
+
+      <strong>
+        鋼の錬金術師
+      </strong>
+
+      <br>
+
+      <span>
+        物語をじっくり楽しみたい人に。
+      </span>
+
     </div>
+
   </div>
+
 
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
 
 <script>
 
-const SUPABASE_URL = "https://jefjskatbpylokxraznx.supabase.co";
+const SUPABASE_URL =
+  "https://jefjskatbpylokxraznx.supabase.co";
+
 
 const SUPABASE_KEY =
   "sb_publishable_7_jtLsbdfK6ns1HETOMcmQ_dmJutsbL";
 
-const supabaseClient = supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
+
+const supabaseClient =
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
 
 
 /* =========================
@@ -298,18 +472,47 @@ const supabaseClient = supabase.createClient(
 
 async function loadMemories() {
 
-  const { data, error } = await supabaseClient
-    .from("comments")
-    .select("*")
-    .eq("work", "進撃の巨人")
-    .not("when_text", "is", null)
-    .order("id", { ascending: false });
 
-  const area = document.getElementById("comments");
-  const memoryCount = document.getElementById("memoryCount");
+  const { data, error } =
+    await supabaseClient
+
+      .from("comments")
+
+      .select("*")
+
+      .eq(
+        "work",
+        "進撃の巨人"
+      )
+
+      .not(
+        "when_text",
+        "is",
+        null
+      )
+
+      .order(
+        "id",
+        {
+          ascending: false
+        }
+      );
 
 
-  /* 読み込みエラー */
+  const area =
+    document.getElementById(
+      "comments"
+    );
+
+
+  const memoryCount =
+    document.getElementById(
+      "memoryCount"
+    );
+
+
+
+  /* エラー */
 
   if (error) {
 
@@ -325,79 +528,149 @@ async function loadMemories() {
   }
 
 
-  /* 思い出が0件 */
 
-  if (!data || data.length === 0) {
+  /* 思い出がない場合 */
+
+  if (
+    !data ||
+    data.length === 0
+  ) {
 
     memoryCount.textContent =
       "🕰️ まだ思い出はありません";
 
+
     area.innerHTML = `
+
       <div class="empty">
+
         まだ思い出はありません。<br>
-        あなたの最初の思い出を残してみよう。
+
+        あなたの最初の思い出を
+        残してみよう。
+
       </div>
+
     `;
 
     return;
   }
 
 
-  /* 思い出の数を表示 */
+
+  /* 思い出の数 */
 
   memoryCount.textContent =
     `🕰️ ${data.length}つの思い出`;
 
 
+
   /* 思い出を表示 */
 
-  area.innerHTML = data.map(memory => {
+  area.innerHTML =
 
-    const nickname =
-      escapeHtml(memory.nickname || "");
-
-    const whenText =
-      escapeHtml(memory.when_text || "");
-
-    const whereText =
-      escapeHtml(memory.where_text || "");
-
-    const withWho =
-      escapeHtml(memory.with_who || "");
-
-    const content =
-      escapeHtml(memory.content || "");
+    data.map(
+      memory => {
 
 
-    return `
-      <div class="memory">
+        const nickname =
+          escapeHtml(
+            memory.nickname || ""
+          );
 
-        <div class="memory-meta">
-          ${whenText}
-        </div>
 
-        <div class="memory-detail">
-          📍 ${whereText}<br>
-          👥 ${withWho}
-        </div>
+        const whenText =
+          escapeHtml(
+            memory.when_text || ""
+          );
 
-        ${
-          content
-            ? `<div class="memory-content">「${content}」</div>`
-            : ""
-        }
 
-        ${
-          nickname
-            ? `<div class="nickname">👤 ${nickname}</div>`
-            : ""
-        }
+        const whereText =
+          escapeHtml(
+            memory.where_text || ""
+          );
 
-      </div>
-    `;
 
-  }).join("");
+        const withWho =
+          escapeHtml(
+            memory.with_who || ""
+          );
+
+
+        const content =
+          escapeHtml(
+            memory.content || ""
+          );
+
+
+
+        return `
+
+          <div class="memory">
+
+
+            <div class="memory-meta">
+
+              ${whenText}
+
+            </div>
+
+
+
+            <div class="memory-detail">
+
+              ${whereText}で、
+              ${withWho}。
+
+            </div>
+
+
+
+            ${
+              content
+
+              ? `
+
+                <div class="memory-content">
+
+                  「${content}」
+
+                </div>
+
+              `
+
+              : ""
+            }
+
+
+
+            ${
+              nickname
+
+              ? `
+
+                <div class="nickname">
+
+                  — ${nickname}
+
+                </div>
+
+              `
+
+              : ""
+            }
+
+
+          </div>
+
+        `;
+
+      }
+
+    ).join("");
+
 }
+
 
 
 /* =========================
@@ -406,28 +679,66 @@ async function loadMemories() {
 
 async function postMemory() {
 
+
   const nickname =
-    document.getElementById("nickname").value.trim();
+    document
+      .getElementById(
+        "nickname"
+      )
+      .value
+      .trim();
+
 
   const whenText =
-    document.getElementById("when_text").value.trim();
+    document
+      .getElementById(
+        "when_text"
+      )
+      .value
+      .trim();
+
 
   const whereText =
-    document.getElementById("where_text").value.trim();
+    document
+      .getElementById(
+        "where_text"
+      )
+      .value
+      .trim();
+
 
   const withWho =
-    document.getElementById("with_who").value.trim();
+    document
+      .getElementById(
+        "with_who"
+      )
+      .value
+      .trim();
+
 
   const content =
-    document.getElementById("content").value.trim();
+    document
+      .getElementById(
+        "content"
+      )
+      .value
+      .trim();
+
 
   const message =
-    document.getElementById("message");
+    document.getElementById(
+      "message"
+    );
+
 
 
   /* 必須項目 */
 
-  if (!whenText || !whereText || !withWho) {
+  if (
+    !whenText ||
+    !whereText ||
+    !withWho
+  ) {
 
     message.textContent =
       "「いつ・どこで・誰と」を入力してください。";
@@ -436,29 +747,41 @@ async function postMemory() {
   }
 
 
+
   message.textContent =
     "保存中……";
 
 
+
   /* Supabaseに保存 */
 
-  const { error } = await supabaseClient
-    .from("comments")
-    .insert({
+  const { error } =
+    await supabaseClient
 
-      nickname: nickname,
+      .from("comments")
 
-      when_text: whenText,
+      .insert({
 
-      where_text: whereText,
+        nickname:
+          nickname,
 
-      with_who: withWho,
+        when_text:
+          whenText,
 
-      content: content,
+        where_text:
+          whereText,
 
-      work: "進撃の巨人"
+        with_who:
+          withWho,
 
-    });
+        content:
+          content,
+
+        work:
+          "進撃の巨人"
+
+      });
+
 
 
   /* 保存エラー */
@@ -474,27 +797,56 @@ async function postMemory() {
   }
 
 
+
   /* フォームを空にする */
 
-  document.getElementById("nickname").value = "";
+  document
+    .getElementById(
+      "nickname"
+    )
+    .value = "";
 
-  document.getElementById("when_text").value = "";
 
-  document.getElementById("where_text").value = "";
+  document
+    .getElementById(
+      "when_text"
+    )
+    .value = "";
 
-  document.getElementById("with_who").value = "";
 
-  document.getElementById("content").value = "";
+  document
+    .getElementById(
+      "where_text"
+    )
+    .value = "";
+
+
+  document
+    .getElementById(
+      "with_who"
+    )
+    .value = "";
+
+
+  document
+    .getElementById(
+      "content"
+    )
+    .value = "";
+
 
 
   message.textContent =
     "思い出を残しました。";
 
 
-  /* 一覧と件数を更新 */
+
+  /* 一覧を更新 */
 
   loadMemories();
+
 }
+
 
 
 /* =========================
@@ -504,12 +856,16 @@ async function postMemory() {
 function escapeHtml(text) {
 
   const div =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
 
   div.textContent = text;
 
   return div.innerHTML;
+
 }
+
 
 
 /* =========================
