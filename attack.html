@@ -195,8 +195,8 @@ button:hover {
 
   <h1>進撃の巨人</h1>
 
-  <div class="rating">
-    ★★★★★ 4.8
+  <div class="rating" id="memoryCount">
+    🕰️ 思い出を読み込み中…
   </div>
 
   <!-- みんなの思い出 -->
@@ -280,8 +280,11 @@ button:hover {
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+
 const SUPABASE_URL = "https://jefjskatbpylokxraznx.supabase.co";
-const SUPABASE_KEY = "sb_publishable_7_jtLsbdfK6ns1HETOMcmQ_dmJutsbL";
+
+const SUPABASE_KEY =
+  "sb_publishable_7_jtLsbdfK6ns1HETOMcmQ_dmJutsbL";
 
 const supabaseClient = supabase.createClient(
   SUPABASE_URL,
@@ -303,29 +306,68 @@ async function loadMemories() {
     .order("id", { ascending: false });
 
   const area = document.getElementById("comments");
+  const memoryCount = document.getElementById("memoryCount");
+
+
+  /* 読み込みエラー */
 
   if (error) {
-    area.innerHTML = "思い出を読み込めませんでした。";
+
+    console.error(error);
+
+    area.innerHTML =
+      "思い出を読み込めませんでした。";
+
+    memoryCount.textContent =
+      "🕰️ 読み込みエラー";
+
     return;
   }
 
+
+  /* 思い出が0件 */
+
   if (!data || data.length === 0) {
+
+    memoryCount.textContent =
+      "🕰️ まだ思い出はありません";
+
     area.innerHTML = `
       <div class="empty">
         まだ思い出はありません。<br>
         あなたの最初の思い出を残してみよう。
       </div>
     `;
+
     return;
   }
 
+
+  /* 思い出の数を表示 */
+
+  memoryCount.textContent =
+    `🕰️ ${data.length}つの思い出`;
+
+
+  /* 思い出を表示 */
+
   area.innerHTML = data.map(memory => {
 
-    const nickname = escapeHtml(memory.nickname || "");
-    const whenText = escapeHtml(memory.when_text || "");
-    const whereText = escapeHtml(memory.where_text || "");
-    const withWho = escapeHtml(memory.with_who || "");
-    const content = escapeHtml(memory.content || "");
+    const nickname =
+      escapeHtml(memory.nickname || "");
+
+    const whenText =
+      escapeHtml(memory.when_text || "");
+
+    const whereText =
+      escapeHtml(memory.where_text || "");
+
+    const withWho =
+      escapeHtml(memory.with_who || "");
+
+    const content =
+      escapeHtml(memory.content || "");
+
 
     return `
       <div class="memory">
@@ -364,44 +406,38 @@ async function loadMemories() {
 
 async function postMemory() {
 
-  const nickname = document
-    .getElementById("nickname")
-    .value
-    .trim();
+  const nickname =
+    document.getElementById("nickname").value.trim();
 
-  const whenText = document
-    .getElementById("when_text")
-    .value
-    .trim();
+  const whenText =
+    document.getElementById("when_text").value.trim();
 
-  const whereText = document
-    .getElementById("where_text")
-    .value
-    .trim();
+  const whereText =
+    document.getElementById("where_text").value.trim();
 
-  const withWho = document
-    .getElementById("with_who")
-    .value
-    .trim();
+  const withWho =
+    document.getElementById("with_who").value.trim();
 
-  const content = document
-    .getElementById("content")
-    .value
-    .trim();
+  const content =
+    document.getElementById("content").value.trim();
 
-  const message = document.getElementById("message");
+  const message =
+    document.getElementById("message");
 
 
-  /* 必須項目をチェック */
+  /* 必須項目 */
 
   if (!whenText || !whereText || !withWho) {
+
     message.textContent =
       "「いつ・どこで・誰と」を入力してください。";
+
     return;
   }
 
 
-  message.textContent = "保存中……";
+  message.textContent =
+    "保存中……";
 
 
   /* Supabaseに保存 */
@@ -409,14 +445,23 @@ async function postMemory() {
   const { error } = await supabaseClient
     .from("comments")
     .insert({
+
       nickname: nickname,
+
       when_text: whenText,
+
       where_text: whereText,
+
       with_who: withWho,
+
       content: content,
+
       work: "進撃の巨人"
+
     });
 
+
+  /* 保存エラー */
 
   if (error) {
 
@@ -432,9 +477,13 @@ async function postMemory() {
   /* フォームを空にする */
 
   document.getElementById("nickname").value = "";
+
   document.getElementById("when_text").value = "";
+
   document.getElementById("where_text").value = "";
+
   document.getElementById("with_who").value = "";
+
   document.getElementById("content").value = "";
 
 
@@ -442,7 +491,7 @@ async function postMemory() {
     "思い出を残しました。";
 
 
-  /* 一覧を更新 */
+  /* 一覧と件数を更新 */
 
   loadMemories();
 }
@@ -454,7 +503,8 @@ async function postMemory() {
 
 function escapeHtml(text) {
 
-  const div = document.createElement("div");
+  const div =
+    document.createElement("div");
 
   div.textContent = text;
 
@@ -472,3 +522,4 @@ loadMemories();
 
 </body>
 </html>
+
