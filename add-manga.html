@@ -95,6 +95,19 @@ button:hover {
     background: #a66dce;
 }
 
+button:disabled {
+    background: #555;
+    cursor: not-allowed;
+}
+
+.message {
+    margin-top: 15px;
+    text-align: center;
+    color: #aaa3b5;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
 </style>
 
 </head>
@@ -136,39 +149,255 @@ button:hover {
     autocomplete="off"
 >
 
-<button onclick="addManga()">
+<button
+    id="addButton"
+    onclick="addManga()"
+>
 この漫画を追加する
 </button>
+
+<div
+    id="message"
+    class="message"
+></div>
 
 </div>
 
 </main>
 
+
+<!-- Supabase -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
 
-function addManga() {
+
+const SUPABASE_URL =
+    "https://jefjskatbpylokxraznx.supabase.co";
+
+
+const SUPABASE_KEY =
+    "sb_publishable_7_jtLsbdfK6ns1HETOMcmQ_dmJutsbL";
+
+
+const supabaseClient =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+
+/*
+=================================
+漫画を追加
+=================================
+*/
+
+async function addManga() {
+
+
+    const input =
+        document.getElementById(
+            "mangaName"
+        );
+
+
+    const button =
+        document.getElementById(
+            "addButton"
+        );
+
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
 
     const name =
-        document.getElementById("mangaName")
-        .value
-        .trim();
+        input.value.trim();
+
+
+
+    /*
+    タイトルが空の場合
+    */
 
     if (!name) {
 
-        alert("漫画のタイトルを入力してください。");
+        message.textContent =
+            "漫画のタイトルを入力してください。";
 
         return;
 
     }
 
-    location.href =
-        "manga-work.html?title=" +
-        encodeURIComponent(name);
+
+
+    /*
+    保存中
+    */
+
+    button.disabled = true;
+
+    button.textContent =
+        "追加中……";
+
+    message.textContent =
+        "";
+
+
+
+    /*
+    すでに登録されているか確認
+    */
+
+    const {
+        data: existing,
+        error: checkError
+    } =
+        await supabaseClient
+
+            .from("works")
+
+            .select("id, title")
+
+            .eq(
+                "title",
+                name
+            )
+
+            .eq(
+                "category",
+                "漫画"
+            )
+
+            .maybeSingle();
+
+
+
+    /*
+    確認エラー
+    */
+
+    if (checkError) {
+
+        console.error(checkError);
+
+        message.textContent =
+            "漫画を確認できませんでした。";
+
+        button.disabled = false;
+
+        button.textContent =
+            "この漫画を追加する";
+
+        return;
+
+    }
+
+
+
+    /*
+    すでに存在する場合
+    */
+
+    if (existing) {
+
+        message.textContent =
+            "この漫画はすでに追加されています。";
+
+        button.disabled = false;
+
+        button.textContent =
+            "この漫画を追加する";
+
+        return;
+
+    }
+
+
+
+    /*
+    worksに追加
+    */
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+
+            .from("works")
+
+            .insert({
+
+                title:
+                    name,
+
+                category:
+                    "漫画"
+
+            })
+
+            .select()
+            .single();
+
+
+
+    /*
+    保存エラー
+    */
+
+    if (error) {
+
+        console.error(error);
+
+        message.textContent =
+            "漫画を追加できませんでした。";
+
+        button.disabled = false;
+
+        button.textContent =
+            "この漫画を追加する";
+
+        return;
+
+    }
+
+
+
+    /*
+    追加成功
+    */
+
+    message.textContent =
+        "漫画を追加しました。漫画一覧へ移動します……";
+
+
+
+    /*
+    少し待って一覧へ
+    */
+
+    setTimeout(
+        function() {
+
+            location.href =
+                "manga.html";
+
+        },
+        700
+    );
 
 }
+
 
 </script>
 
 </body>
 
 </html>
+
