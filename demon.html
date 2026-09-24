@@ -11,125 +11,233 @@
 <style>
 
 * {
-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-margin: 0;
-font-family: Arial, sans-serif;
-background: #0b0b12;
-color: #fff;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0b12;
+  color: #fff;
 }
 
 header {
-padding: 25px 18px;
-background: linear-gradient(135deg, #171326, #4a1020);
+  padding: 25px 18px;
+  background: linear-gradient(135deg, #171326, #32104f);
 }
 
 .back {
-color: #d8c1c8;
-text-decoration: none;
-font-size: 14px;
+  color: #c9b7d8;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 main {
-max-width: 700px;
-margin: auto;
-padding: 25px 16px 60px;
+  max-width: 700px;
+  margin: auto;
+  padding: 25px 16px 60px;
 }
 
 .work-icon {
-font-size: 70px;
-margin-top: 20px;
+  font-size: 70px;
+  margin-top: 20px;
 }
 
 h1 {
-font-size: 32px;
-margin: 10px 0;
+  font-size: 32px;
+  margin: 10px 0;
 }
 
 .tag {
-display: inline-block;
-padding: 6px 10px;
-border-radius: 20px;
-background: #4a1824;
-color: #f3b8c5;
-font-size: 12px;
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: #3a2350;
+  color: #d9b8f2;
+  font-size: 12px;
 }
 
+/* セクション */
+
 .section {
-margin-top: 30px;
+  margin-top: 30px;
 }
 
 .section h2 {
-font-size: 19px;
+  font-size: 19px;
 }
 
-.comment {
-background: #171720;
-border: 1px solid #3d252c;
-border-radius: 15px;
-padding: 16px;
-margin: 12px 0;
+/* 思い出カード */
+
+.memory {
+  background: linear-gradient(
+    145deg,
+    #191720,
+    #14131b
+  );
+
+  border: 1px solid #33263d;
+
+  border-radius: 18px;
+
+  padding: 22px;
+
+  margin: 16px 0;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.18);
 }
 
-.comment p {
-margin: 0 0 8px;
-line-height: 1.7;
+.memory-meta {
+  color: #e8dff0;
+
+  font-size: 18px;
+
+  font-weight: bold;
+
+  margin-bottom: 10px;
+}
+
+.memory-detail {
+  color: #bdb5c5;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+
+  margin-bottom: 15px;
+}
+
+.memory-content {
+  margin: 15px 0 0;
+
+  padding-top: 15px;
+
+  border-top: 1px solid #33263d;
+
+  line-height: 1.9;
+
+  color: #fff;
+
+  font-size: 15px;
 }
 
 .nickname {
-color: #f080a0;
-font-weight: bold;
+  color: #c084fc;
+
+  font-size: 13px;
+
+  margin-top: 16px;
+
+  text-align: right;
 }
 
+
+/* フォーム */
+
 .form {
-background: #171720;
-border: 1px solid #3d252c;
-border-radius: 15px;
-padding: 18px;
-margin-top: 15px;
+  background: #171720;
+
+  border: 1px solid #33263d;
+
+  border-radius: 15px;
+
+  padding: 18px;
+
+  margin-top: 15px;
+}
+
+.form label {
+  display: block;
+
+  margin-top: 5px;
+
+  font-size: 14px;
+
+  color: #d9d1df;
 }
 
 input,
 textarea {
-width: 100%;
-margin-top: 8px;
-margin-bottom: 15px;
-padding: 12px;
-border-radius: 10px;
-border: 1px solid #49303a;
-background: #0f0f16;
-color: white;
-font-size: 15px;
+  width: 100%;
+
+  margin-top: 8px;
+
+  margin-bottom: 15px;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  border: 1px solid #493954;
+
+  background: #0f0f16;
+
+  color: white;
+
+  font-size: 15px;
 }
 
 textarea {
-min-height: 120px;
-resize: vertical;
+  min-height: 100px;
+
+  resize: vertical;
 }
 
 button {
-width: 100%;
-padding: 14px;
-border: 0;
-border-radius: 10px;
-background: #e63963;
-color: white;
-font-size: 16px;
-font-weight: bold;
+  width: 100%;
+
+  padding: 14px;
+
+  border: 0;
+
+  border-radius: 10px;
+
+  background: #a855f7;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+button:hover {
+  background: #9333ea;
 }
 
 .message {
-margin-top: 12px;
-color: #bdb5c5;
+  margin-top: 12px;
+
+  color: #bdb5c5;
 }
 
-.recommend {
-background: linear-gradient(145deg, #2b1720, #171720);
-border-radius: 15px;
-padding: 18px;
-margin-top: 12px;
+.empty {
+  background: #171720;
+
+  border: 1px solid #33263d;
+
+  border-radius: 15px;
+
+  padding: 20px;
+
+  color: #bdb5c5;
+
+  line-height: 1.7;
+}
+
+.work-cover {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.work-cover img {
+  width: 200px;
+  max-width: 45%;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 </style>
@@ -141,292 +249,553 @@ margin-top: 12px;
 
 <header>
 
-<a class="back" href="manga.html">
-← 漫画一覧へ戻る
-</a>
+  <a
+    class="back"
+    href="index.html"
+  >
+    ← 作品一覧へ戻る
+  </a>
 
 </header>
 
 
 <main>
 
-<div class="work-icon">
-🗡️
-</div>
 
-<span class="tag">
-漫画
-</span>
+  <div class="work-cover">
 
-<h1>
-鬼滅の刃
-</h1>
+    <img
+      src="demon.jpg"
+      alt="鬼滅の刃 表紙"
+    >
+
+  </div>
 
 
-<div class="section">
-
-<h2>
-💭 みんなの思い出
-</h2>
-
-<div id="comments">
-読み込み中……
-</div>
-
-</div>
+  <span class="tag">
+    漫画
+  </span>
 
 
-<div class="section">
-
-<h2>
-✍️ 思い出を語ろう
-</h2>
-
-<div class="form">
-
-<label>
-ニックネーム
-</label>
-
-<input
-id="nickname"
-type="text"
-placeholder="例：たろう"
->
+  <h1>
+    鬼滅の刃
+  </h1>
 
 
-<label>
-思い出
-</label>
-
-<textarea
-id="content"
-placeholder="この作品との思い出を書いてみよう！"
-></textarea>
+  <div
+    class="rating"
+    id="memoryCount"
+  >
+    🕰️ 思い出を読み込み中…
+  </div>
 
 
-<button onclick="postComment()">
-投稿する
-</button>
 
-<div id="message" class="message">
-</div>
+  <!-- みんなの思い出 -->
 
-</div>
+  <div class="section">
 
-</div>
+    <h2>
+      みんなの思い出
+    </h2>
 
 
-<div class="section">
+    <div id="comments">
+      読み込み中……
+    </div>
 
-<h2>
-🔥 この作品が好きなら？
-</h2>
-
-
-<div class="recommend">
-
-<strong>
-呪術廻戦
-</strong>
-
-<br>
-
-<span>
-キャラクター同士の関係や戦いが好きな人に。
-</span>
-
-</div>
+  </div>
 
 
-<div class="recommend">
 
-<strong>
-鋼の錬金術師
-</strong>
+  <!-- 思い出を投稿 -->
 
-<br>
+  <div class="section">
 
-<span>
-物語とキャラクターをじっくり楽しみたい人に。
-</span>
+    <h2>
+      ✍️ あなたの思い出を残す
+    </h2>
 
-</div>
 
-</div>
+    <div class="form">
+
+
+      <label>
+        ニックネーム
+      </label>
+
+      <input
+        id="nickname"
+        type="text"
+        placeholder="例：たろう"
+      >
+
+
+      <label>
+        いつ？
+      </label>
+
+      <input
+        id="when_text"
+        type="text"
+        placeholder="例：2014年、高校生のころ"
+      >
+
+
+      <label>
+        どこで？
+      </label>
+
+      <input
+        id="where_text"
+        type="text"
+        placeholder="例：自分の部屋"
+      >
+
+
+      <label>
+        誰と？
+      </label>
+
+      <input
+        id="with_who"
+        type="text"
+        placeholder="例：友達と"
+      >
+
+
+      <label>
+        ひとこと（任意）
+      </label>
+
+      <textarea
+        id="content"
+        placeholder="そのときのことを少しだけ。"
+      ></textarea>
+
+
+      <button
+        onclick="postMemory()"
+      >
+        思い出を残す
+      </button>
+
+
+      <div
+        id="message"
+        class="message"
+      ></div>
+
+
+    </div>
+
+  </div>
+
 
 </main>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
 
 
 <script>
 
 const SUPABASE_URL =
-"https://jefjskatbpylokxraznx.supabase.co";
+  "https://jefjskatbpylokxraznx.supabase.co";
+
 
 const SUPABASE_KEY =
-"sb_publishable_7_jtLsbdfK6ns1HETOMcmQ_dmJutsbL";
+  "sb_publishable_7_jtLsbdfK6ns1HETOMcmQ_dmJutsbL";
 
 
 const supabaseClient =
-supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
 
-async function loadComments() {
 
-const { data, error } =
-await supabaseClient
+/* =========================
+   思い出を読み込む
+========================= */
 
-.from("comments")
-
-.select("*")
-
-.eq("work", "鬼滅の刃")
-
-.order("id", {
-ascending: false
-});
+async function loadMemories() {
 
 
-const area =
-document.getElementById("comments");
+  const { data, error } =
+    await supabaseClient
+
+      .from("comments")
+
+      .select("*")
+
+      .eq(
+        "work",
+        "鬼滅の刃"
+      )
+
+      .not(
+        "when_text",
+        "is",
+        null
+      )
+
+      .order(
+        "id",
+        {
+          ascending: false
+        }
+      );
 
 
-if (error) {
+  const area =
+    document.getElementById(
+      "comments"
+    );
 
-area.innerHTML =
-"思い出を読み込めませんでした。";
 
-return;
+  const memoryCount =
+    document.getElementById(
+      "memoryCount"
+    );
+
+
+  if (error) {
+
+    console.error(error);
+
+    area.innerHTML =
+      "思い出を読み込めませんでした。";
+
+    memoryCount.textContent =
+      "🕰️ 読み込みエラー";
+
+    return;
+  }
+
+
+  if (
+    !data ||
+    data.length === 0
+  ) {
+
+    memoryCount.textContent =
+      "🕰️ まだ思い出はありません";
+
+
+    area.innerHTML = `
+
+      <div class="empty">
+
+        まだ思い出はありません。<br>
+
+        あなたの最初の思い出を
+        残してみよう。
+
+      </div>
+
+    `;
+
+    return;
+  }
+
+
+  memoryCount.textContent =
+    `🕰️ ${data.length}つの思い出`;
+
+
+  area.innerHTML =
+
+    data.map(
+      memory => {
+
+
+        const nickname =
+          escapeHtml(
+            memory.nickname || ""
+          );
+
+
+        const whenText =
+          escapeHtml(
+            memory.when_text || ""
+          );
+
+
+        const whereText =
+          escapeHtml(
+            memory.where_text || ""
+          );
+
+
+        const withWho =
+          escapeHtml(
+            memory.with_who || ""
+          );
+
+
+        const content =
+          escapeHtml(
+            memory.content || ""
+          );
+
+
+        return `
+
+          <div class="memory">
+
+            <div class="memory-meta">
+
+              ${whenText}
+
+            </div>
+
+
+            <div class="memory-detail">
+
+              ${whereText}で、
+              ${withWho}。
+
+            </div>
+
+
+            ${
+              content
+
+              ? `
+
+                <div class="memory-content">
+
+                  「${content}」
+
+                </div>
+
+              `
+
+              : ""
+            }
+
+
+            ${
+              nickname
+
+              ? `
+
+                <div class="nickname">
+
+                  — ${nickname}
+
+                </div>
+
+              `
+
+              : ""
+            }
+
+          </div>
+
+        `;
+
+      }
+
+    ).join("");
 
 }
 
 
-if (!data || data.length === 0) {
 
-area.innerHTML =
-"まだ思い出はありません。最初の思い出を書いてみよう！";
+/* =========================
+   思い出を投稿
+========================= */
 
-return;
+async function postMemory() {
+
+
+  const nickname =
+    document
+      .getElementById(
+        "nickname"
+      )
+      .value
+      .trim();
+
+
+  const whenText =
+    document
+      .getElementById(
+        "when_text"
+      )
+      .value
+      .trim();
+
+
+  const whereText =
+    document
+      .getElementById(
+        "where_text"
+      )
+      .value
+      .trim();
+
+
+  const withWho =
+    document
+      .getElementById(
+        "with_who"
+      )
+      .value
+      .trim();
+
+
+  const content =
+    document
+      .getElementById(
+        "content"
+      )
+      .value
+      .trim();
+
+
+  const message =
+    document.getElementById(
+      "message"
+    );
+
+
+  if (
+    !whenText ||
+    !whereText ||
+    !withWho
+  ) {
+
+    message.textContent =
+      "「いつ・どこで・誰と」を入力してください。";
+
+    return;
+  }
+
+
+  message.textContent =
+    "保存中……";
+
+
+  const { error } =
+    await supabaseClient
+
+      .from("comments")
+
+      .insert({
+
+        nickname:
+          nickname,
+
+        when_text:
+          whenText,
+
+        where_text:
+          whereText,
+
+        with_who:
+          withWho,
+
+        content:
+          content,
+
+        work:
+          "鬼滅の刃"
+
+      });
+
+
+  if (error) {
+
+    console.error(error);
+
+    message.textContent =
+      "保存できませんでした。";
+
+    return;
+  }
+
+
+  document
+    .getElementById(
+      "nickname"
+    )
+    .value = "";
+
+
+  document
+    .getElementById(
+      "when_text"
+    )
+    .value = "";
+
+
+  document
+    .getElementById(
+      "where_text"
+    )
+    .value = "";
+
+
+  document
+    .getElementById(
+      "with_who"
+    )
+    .value = "";
+
+
+  document
+    .getElementById(
+      "content"
+    )
+    .value = "";
+
+
+  message.textContent =
+    "思い出を残しました。";
+
+
+  loadMemories();
 
 }
 
 
-area.innerHTML =
-data.map(comment => `
 
-<div class="comment">
-
-<div class="nickname">
-👤 ${escapeHtml(comment.nickname)}
-</div>
-
-<p>
-${escapeHtml(comment.content)}
-</p>
-
-</div>
-
-`).join("");
-
-}
-
-
-async function postComment() {
-
-const nickname =
-document.getElementById("nickname")
-.value.trim();
-
-
-const content =
-document.getElementById("content")
-.value.trim();
-
-
-const message =
-document.getElementById("message");
-
-
-if (!nickname || !content) {
-
-message.textContent =
-"ニックネームと思い出を入力してください。";
-
-return;
-
-}
-
-
-message.textContent =
-"投稿中……";
-
-
-const { error } =
-await supabaseClient
-
-.from("comments")
-
-.insert({
-
-nickname: nickname,
-
-content: content,
-
-work: "鬼滅の刃"
-
-});
-
-
-if (error) {
-
-message.textContent =
-"投稿できませんでした。";
-
-return;
-
-}
-
-
-document.getElementById("nickname")
-.value = "";
-
-document.getElementById("content")
-.value = "";
-
-
-message.textContent =
-"投稿しました！🎉";
-
-
-loadComments();
-
-}
-
+/* =========================
+   HTMLエスケープ
+========================= */
 
 function escapeHtml(text) {
 
-const div =
-document.createElement("div");
+  const div =
+    document.createElement(
+      "div"
+    );
 
-div.textContent = text;
+  div.textContent = text;
 
-return div.innerHTML;
+  return div.innerHTML;
 
 }
 
 
-loadComments();
+
+/* =========================
+   初期読み込み
+========================= */
+
+loadMemories();
 
 </script>
-
 
 </body>
 
 </html>
+
 
