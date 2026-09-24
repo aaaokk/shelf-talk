@@ -1,1 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>漫画 - SHELF TALK</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0b12;
+    color: #ffffff;
+}
+
+header {
+    padding: 30px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #171326, #32104f);
+}
+
+.back {
+    display: block;
+    text-align: left;
+    max-width: 700px;
+    margin: 0 auto 15px;
+    color: #aaa3b5;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.back:hover {
+    color: #ffffff;
+}
+
+.icon {
+    font-size: 45px;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-top: 8px;
+}
+
+.subtitle {
+    margin-top: 8px;
+    color: #cfc5d8;
+    font-size: 14px;
+}
+
+main {
+    max-width: 700px;
+    margin: auto;
+    padding: 30px 16px 50px;
+}
+
+.section-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: linear-gradient(145deg, #171720, #24182f);
+    border: 1px solid #422b55;
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: #8b5bb5;
+}
+
+.work-icon {
+    font-size: 40px;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.desc {
+    color: #aaa3b5;
+    margin-top: 7px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+footer {
+    text-align: center;
+    color: #777;
+    font-size: 12px;
+    padding: 30px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <a href="index.html" class="back">
+        ← SHELF TALK
+    </a>
+
+    <div class="icon">📚</div>
+
+    <div class="logo">
+        漫画
+    </div>
+
+    <div class="subtitle">
+        あなたの思い出に残っている漫画を語ろう。
+    </div>
+
+</header>
+
+
+<main>
+
+    <div class="section-title">
+        📖 漫画の思い出
+    </div>
+
+
+    <!-- 進撃の巨人 -->
+    <div class="card" onclick="location.href='attack.html'">
+
+        <div class="work-icon">⚔️</div>
+
+        <div class="title">
+            進撃の巨人
+        </div>
+
+        <div class="desc">
+            あなたの思い出を語ろう。
+        </div>
+
+    </div>
+
+
+    <!-- 鬼滅の刃 -->
+    <div class="card" onclick="location.href='demon.html'">
+
+        <div class="work-icon">🗡️</div>
+
+        <div class="title">
+            鬼滅の刃
+        </div>
+
+        <div class="desc">
+            あなたの思い出を語ろう。
+        </div>
+
+    </div>
+
+
+    <!-- 作品追加用 -->
+    <div class="card">
+
+        <div class="work-icon">＋</div>
+
+        <div class="title">
+            あなたの思い出の漫画
+        </div>
+
+        <div class="desc">
+            これから作品を追加できます。
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+    SHELF TALK
+</footer>
+
+</body>
+
+</html>この
 
