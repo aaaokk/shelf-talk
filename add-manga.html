@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>漫画を追加 | SHELF TALK</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0b12;
+    color: #ffffff;
+}
+
+header {
+    padding: 25px 18px;
+    background: linear-gradient(135deg, #171326, #32104f);
+}
+
+.back {
+    color: #aaa3b5;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+main {
+    max-width: 700px;
+    margin: auto;
+    padding: 35px 16px 60px;
+}
+
+.icon {
+    font-size: 60px;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    font-size: 27px;
+    margin: 15px 0 8px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #aaa3b5;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.form {
+    background: linear-gradient(145deg, #171720, #24182f);
+    border: 1px solid #422b55;
+    border-radius: 18px;
+    padding: 22px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #49365a;
+    background: #0f0f16;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 18px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #8b5bb5;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #a66dce;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<a href="manga.html" class="back">
+← 漫画一覧へ戻る
+</a>
+
+</header>
+
+<main>
+
+<div class="icon">
+📚
+</div>
+
+<h1>
+思い出の漫画を追加する
+</h1>
+
+<div class="subtitle">
+あなたの心に残っている漫画を教えてください。
+</div>
+
+<div class="form">
+
+<label for="mangaName">
+漫画のタイトル
+</label>
+
+<input
+    id="mangaName"
+    type="text"
+    placeholder="例：ONE PIECE"
+>
+
+<button onclick="addManga()">
+この漫画を追加する
+</button>
+
+</div>
+
+</main>
+
+<script>
+
+function addManga() {
+
+    const name =
+        document.getElementById("mangaName")
+        .value
+        .trim();
+
+    if (!name) {
+        alert("漫画のタイトルを入力してください。");
+        return;
+    }
+
+    alert(
+        "「" + name + "」を追加しました！"
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>
