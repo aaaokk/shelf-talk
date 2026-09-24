@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>進撃の巨人 | SHELF TALK</title>
+
 <style>
-* { box-sizing: border-box; }
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -48,12 +55,6 @@ h1 {
   background: #3a2350;
   color: #d9b8f2;
   font-size: 12px;
-}
-
-.rating {
-  color: #ffd166;
-  font-size: 20px;
-  margin: 15px 0 25px;
 }
 
 /* セクション */
@@ -227,23 +228,6 @@ button:hover {
   line-height: 1.7;
 }
 
-
-/* おすすめ */
-
-.recommend {
-  background:
-    linear-gradient(
-      145deg,
-      #21172b,
-      #171720
-    );
-
-  border-radius: 15px;
-
-  padding: 18px;
-
-  margin-top: 12px;
-}
 .work-cover {
   margin-top: 20px;
   text-align: center;
@@ -255,7 +239,9 @@ button:hover {
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
+
 </style>
+
 </head>
 
 
@@ -276,9 +262,14 @@ button:hover {
 <main>
 
 
- <div class="work-cover">
-  <img src="attack.jpg" alt="進撃の巨人 表紙">
-</div>
+  <div class="work-cover">
+
+    <img
+      src="attack.jpg"
+      alt="進撃の巨人 表紙"
+    >
+
+  </div>
 
 
   <span class="tag">
@@ -340,7 +331,6 @@ button:hover {
       >
 
 
-
       <label>
         いつ？
       </label>
@@ -350,7 +340,6 @@ button:hover {
         type="text"
         placeholder="例：2014年、高校生のころ"
       >
-
 
 
       <label>
@@ -364,7 +353,6 @@ button:hover {
       >
 
 
-
       <label>
         誰と？
       </label>
@@ -376,7 +364,6 @@ button:hover {
       >
 
 
-
       <label>
         ひとこと（任意）
       </label>
@@ -385,7 +372,6 @@ button:hover {
         id="content"
         placeholder="そのときのことを少しだけ。"
       ></textarea>
-
 
 
       <button
@@ -400,48 +386,6 @@ button:hover {
         class="message"
       ></div>
 
-
-    </div>
-
-  </div>
-
-
-
-  <!-- おすすめ -->
-
-  <div class="section">
-
-    <h2>
-      🔥 この作品が好きなら？
-    </h2>
-
-
-    <div class="recommend">
-
-      <strong>
-        HUNTER×HUNTER
-      </strong>
-
-      <br>
-
-      <span>
-        世界観や伏線が好きな人におすすめ。
-      </span>
-
-    </div>
-
-
-    <div class="recommend">
-
-      <strong>
-        鋼の錬金術師
-      </strong>
-
-      <br>
-
-      <span>
-        物語をじっくり楽しみたい人に。
-      </span>
 
     </div>
 
@@ -520,9 +464,6 @@ async function loadMemories() {
     );
 
 
-
-  /* エラー */
-
   if (error) {
 
     console.error(error);
@@ -536,9 +477,6 @@ async function loadMemories() {
     return;
   }
 
-
-
-  /* 思い出がない場合 */
 
   if (
     !data ||
@@ -566,15 +504,9 @@ async function loadMemories() {
   }
 
 
-
-  /* 思い出の数 */
-
   memoryCount.textContent =
     `🕰️ ${data.length}つの思い出`;
 
-
-
-  /* 思い出を表示 */
 
   area.innerHTML =
 
@@ -612,11 +544,9 @@ async function loadMemories() {
           );
 
 
-
         return `
 
           <div class="memory">
-
 
             <div class="memory-meta">
 
@@ -625,14 +555,12 @@ async function loadMemories() {
             </div>
 
 
-
             <div class="memory-detail">
 
               ${whereText}で、
               ${withWho}。
 
             </div>
-
 
 
             ${
@@ -652,7 +580,6 @@ async function loadMemories() {
             }
 
 
-
             ${
               nickname
 
@@ -668,7 +595,6 @@ async function loadMemories() {
 
               : ""
             }
-
 
           </div>
 
@@ -740,9 +666,6 @@ async function postMemory() {
     );
 
 
-
-  /* 必須項目 */
-
   if (
     !whenText ||
     !whereText ||
@@ -756,13 +679,9 @@ async function postMemory() {
   }
 
 
-
   message.textContent =
     "保存中……";
 
-
-
-  /* Supabaseに保存 */
 
   const { error } =
     await supabaseClient
@@ -792,9 +711,6 @@ async function postMemory() {
       });
 
 
-
-  /* 保存エラー */
-
   if (error) {
 
     console.error(error);
@@ -805,9 +721,6 @@ async function postMemory() {
     return;
   }
 
-
-
-  /* フォームを空にする */
 
   document
     .getElementById(
@@ -844,13 +757,9 @@ async function postMemory() {
     .value = "";
 
 
-
   message.textContent =
     "思い出を残しました。";
 
-
-
-  /* 一覧を更新 */
 
   loadMemories();
 
@@ -886,5 +795,6 @@ loadMemories();
 </script>
 
 </body>
+
 </html>
 
