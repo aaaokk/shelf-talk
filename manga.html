@@ -149,20 +149,19 @@ footer {
     </div>
 
 
-    <!-- 漫画一覧 -->
-
     <div id="works">
-
         読み込み中……
-
     </div>
 
 
-    <!-- 作品追加 -->
+    <div
+        class="card"
+        onclick="location.href='add-manga.html'"
+    >
 
-    <div class="card" onclick="location.href='add-manga.html'">
-
-        <div class="work-icon">＋</div>
+        <div class="work-icon">
+            ＋
+        </div>
 
         <div class="title">
             思い出の漫画を追加する
@@ -174,7 +173,6 @@ footer {
 
     </div>
 
-
 </main>
 
 
@@ -183,20 +181,17 @@ footer {
 </footer>
 
 
-
-<!-- Supabase -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script>
 
+<script>
 
 const SUPABASE_URL =
     "https://jefjskatbpylokxraznx.supabase.co";
 
 
 const SUPABASE_KEY =
-    "sb_publishable_7_jtLsbdfK6ns1HETOMcmQ_dmJutsbL";
+    "sb_publishable_7_jtLsbdf6ns1HETOMcmQ_dmJutsbL";
 
 
 const supabaseClient =
@@ -206,15 +201,7 @@ const supabaseClient =
     );
 
 
-
-/*
-=================================
-漫画一覧を読み込む
-=================================
-*/
-
 async function loadWorks() {
-
 
     const area =
         document.getElementById("works");
@@ -243,11 +230,6 @@ async function loadWorks() {
             );
 
 
-
-    /*
-    エラー
-    */
-
     if (error) {
 
         console.error(error);
@@ -265,11 +247,6 @@ async function loadWorks() {
         return;
     }
 
-
-
-    /*
-    作品がない場合
-    */
 
     if (
         !data ||
@@ -290,20 +267,10 @@ async function loadWorks() {
     }
 
 
-
-    /*
-    作品を表示
-    */
-
     area.innerHTML =
 
         data.map(
             work => {
-
-
-                /*
-                作品ごとのアイコン
-                */
 
                 let icon = "📖";
 
@@ -338,50 +305,11 @@ async function loadWorks() {
                 }
 
 
-
-                /*
-                既存作品のページ
-                */
-
-                let page =
-                    "#";
-
-
-                if (
-                    work.title ===
-                    "進撃の巨人"
-                ) {
-
-                    page =
-                        "attack.html";
-
-                }
-
-
-                if (
-                    work.title ===
-                    "鬼滅の刃"
-                ) {
-
-                    page =
-                        "demon.html";
-
-                }
-
-
-
-                /*
-                作品カード
-                */
-
                 return `
 
                     <div
                         class="card"
-                        onclick="openWork(
-                            '${escapeHtml(work.title)}',
-                            '${page}'
-                        )"
+                        onclick="openWork('${work.id}')"
                     >
 
                         <div class="work-icon">
@@ -417,53 +345,14 @@ async function loadWorks() {
 }
 
 
+function openWork(id) {
 
-/*
-=================================
-作品を開く
-=================================
-*/
-
-function openWork(
-    title,
-    page
-) {
-
-
-    /*
-    ページが登録されている作品
-    */
-
-    if (
-        page !== "#"
-    ) {
-
-        location.href =
-            page;
-
-        return;
-    }
-
-
-
-    /*
-    まだ専用ページがない作品
-    */
-
-    alert(
-        title +
-        "のページは準備中です。"
-    );
+    location.href =
+        "work.html?id=" +
+        encodeURIComponent(id);
 
 }
 
-
-
-/*
-=================================
-HTMLエスケープ
-=================================
-*/
 
 function escapeHtml(text) {
 
@@ -478,13 +367,6 @@ function escapeHtml(text) {
 }
 
 
-
-/*
-=================================
-開始
-=================================
-*/
-
 loadWorks();
 
 </script>
@@ -493,5 +375,4 @@ loadWorks();
 </body>
 
 </html>
-
 
