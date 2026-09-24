@@ -133,6 +133,7 @@ button:hover {
     id="mangaName"
     type="text"
     placeholder="例：ONE PIECE"
+    autocomplete="off"
 >
 
 <button onclick="addManga()">
@@ -153,13 +154,16 @@ function addManga() {
         .trim();
 
     if (!name) {
+
         alert("漫画のタイトルを入力してください。");
+
         return;
+
     }
 
-    alert(
-        "「" + name + "」を追加しました！"
-    );
+    location.href =
+        "manga-work.html?title=" +
+        encodeURIComponent(name);
 
 }
 
