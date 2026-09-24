@@ -415,6 +415,12 @@ const supabaseClient =
     SUPABASE_URL,
     SUPABASE_KEY
   );
+  const params = new URLSearchParams(
+  window.location.search
+);
+
+const workId = params.get("id");
+
 const params = new URLSearchParams(
   window.location.search
 );
