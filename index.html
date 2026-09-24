@@ -10,81 +10,77 @@
 <style>
 
 * {
-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-margin: 0;
-font-family: Arial, sans-serif;
-background: #0b0b12;
-color: #ffffff;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0b12;
+    color: #ffffff;
 }
 
 header {
-padding: 35px 20px;
-text-align: center;
-background: linear-gradient(135deg, #171326, #32104f);
+    padding: 35px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #171326, #32104f);
 }
 
 .logo {
-font-size: 30px;
-font-weight: bold;
-letter-spacing: 3px;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 3px;
 }
 
 .subtitle {
-margin-top: 8px;
-color: #cfc5d8;
-font-size: 14px;
+    margin-top: 8px;
+    color: #cfc5d8;
+    font-size: 14px;
 }
 
 main {
-max-width: 700px;
-margin: auto;
-padding: 25px 16px 50px;
-}
-
-h2 {
-font-size: 20px;
-margin-bottom: 20px;
+    max-width: 700px;
+    margin: auto;
+    padding: 30px 16px 50px;
 }
 
 .card {
-background: linear-gradient(145deg, #171720, #24182f);
-border: 1px solid #422b55;
-border-radius: 18px;
-padding: 22px;
-margin-bottom: 16px;
-cursor: pointer;
-transition: transform 0.2s, border-color 0.2s;
+    background: linear-gradient(145deg, #171720, #24182f);
+    border: 1px solid #422b55;
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
 }
 
 .card:hover {
-transform: translateY(-3px);
-border-color: #8b5bb5;
+    transform: translateY(-3px);
+    border-color: #8b5bb5;
 }
 
 .icon {
-font-size: 42px;
+    font-size: 42px;
 }
 
 .title {
-font-size: 22px;
-font-weight: bold;
-margin-top: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 .desc {
-color: #aaa3b5;
-margin-top: 7px;
-font-size: 14px;
+    color: #aaa3b5;
+    margin-top: 7px;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 footer {
-text-align: center;
-color: #777;
-font-size: 12px;
-padding: 30px;
+    text-align: center;
+    color: #777;
+    font-size: 12px;
+    padding: 30px;
 }
 
 </style>
@@ -95,94 +91,101 @@ padding: 30px;
 
 <header>
 
-<div class="logo">⚡ SHELF TALK ⚡</div>
+    <div class="logo">⚡ SHELF TALK ⚡</div>
 
-<div class="subtitle">
-あなたの思い出を語ろう。
-</div>
+    <div class="subtitle">
+        あなたの思い出を語ろう。
+    </div>
 
 </header>
 
+
 <main>
 
-<h2>📚 漫画</h2>
+    <!-- 漫画 -->
+    <div class="card" onclick="location.href='manga.html'">
 
-<div class="card" onclick="location.href='manga.html'">
+        <div class="icon">📚</div>
 
-<div class="icon">📖</div>
+        <div class="title">
+            漫画
+        </div>
 
-<div class="title">漫画</div>
+        <div class="desc">
+            忘れられない一冊を語ろう。
+        </div>
 
-<div class="desc">
-心に残っている漫画の思い出を語ろう。
-</div>
-
-</div>
-
-
-<h2>🎮 ゲーム</h2>
-
-<div class="card" onclick="location.href='game.html'">
-
-<div class="icon">🎮</div>
-
-<div class="title">ゲーム</div>
-
-<div class="desc">
-忘れられないゲームの思い出を語ろう。
-</div>
-
-</div>
+    </div>
 
 
-<h2>🧸 フィギュア</h2>
+    <!-- ゲーム -->
+    <div class="card" onclick="location.href='game.html'">
 
-<div class="card" onclick="location.href='figure.html'">
+        <div class="icon">🎮</div>
 
-<div class="icon">🧸</div>
+        <div class="title">
+            ゲーム
+        </div>
 
-<div class="title">フィギュア</div>
+        <div class="desc">
+            心に残るゲームを語ろう。
+        </div>
 
-<div class="desc">
-大切なフィギュアとの思い出を語ろう。
-</div>
-
-</div>
-
-
-<h2>🎵 歌</h2>
-
-<div class="card" onclick="location.href='song.html'">
-
-<div class="icon">🎵</div>
-
-<div class="title">歌</div>
-
-<div class="desc">
-思い出に残っている歌を語ろう。
-</div>
-
-</div>
+    </div>
 
 
-<h2>📍 場所</h2>
+    <!-- フィギュア -->
+    <div class="card" onclick="location.href='figure.html'">
 
-<div class="card" onclick="location.href='place.html'">
+        <div class="icon">🧸</div>
 
-<div class="icon">📍</div>
+        <div class="title">
+            フィギュア
+        </div>
 
-<div class="title">場所</div>
+        <div class="desc">
+            大切な一体を語ろう。
+        </div>
 
-<div class="desc">
-あなたの心に残っている場所を語ろう。
-</div>
+    </div>
 
-</div>
+
+    <!-- 歌 -->
+    <div class="card" onclick="location.href='song.html'">
+
+        <div class="icon">🎵</div>
+
+        <div class="title">
+            歌
+        </div>
+
+        <div class="desc">
+            思い出の一曲を語ろう。
+        </div>
+
+    </div>
+
+
+    <!-- 場所 -->
+    <div class="card" onclick="location.href='place.html'">
+
+        <div class="icon">📍</div>
+
+        <div class="title">
+            場所
+        </div>
+
+        <div class="desc">
+            忘れられない場所を語ろう。
+        </div>
+
+    </div>
 
 </main>
 
+
 <footer>
-SHELF TALK
+    SHELF TALK
 </footer>
 
 </body>
