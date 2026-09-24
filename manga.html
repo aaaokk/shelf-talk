@@ -183,21 +183,24 @@ footer {
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
 <script>
 
 const SUPABASE_URL =
     "https://jefjskatbpylokxraznx.supabase.co";
 
-
 const SUPABASE_KEY =
     "sb_publishable_7_jtLsbdf6ns1HETOMcmQ_dmJutsbL";
 
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
-const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
+
+/* =========================
+   漫画一覧を読み込む
+========================= */
 
 async function loadWorks() {
 
@@ -210,27 +213,20 @@ async function loadWorks() {
         error
     } =
         await supabaseClient
-
             .from("works")
-
             .select("*")
-
-            .eq(
-                "category",
-                "漫画"
-            )
-
-            .order(
-                "id",
-                {
-                    ascending: true
-                }
-            );
+            .eq("category", "漫画")
+            .order("id", {
+                ascending: true
+            });
 
 
     if (error) {
 
-        console.error(error);
+        console.error(
+            "works読み込みエラー:",
+            error
+        );
 
         area.innerHTML = `
 
@@ -273,41 +269,52 @@ async function loadWorks() {
                 let icon = "📖";
 
 
+                /*
+                作品ごとのアイコン
+                */
+
                 if (
-                    work.title ===
-                    "進撃の巨人"
+                    work.title === "進撃の巨人"
                 ) {
 
                     icon = "⚔️";
 
                 }
 
-
-                if (
-                    work.title ===
-                    "鬼滅の刃"
+                else if (
+                    work.title === "鬼滅の刃"
                 ) {
 
                     icon = "🗡️";
 
                 }
 
-
-                if (
-                    work.title ===
-                    "ONE PIECE"
+                else if (
+                    work.title === "ONE PIECE"
                 ) {
 
                     icon = "🏴‍☠️";
 
                 }
 
+                else if (
+                    work.title === "NARUTO"
+                ) {
+
+                    icon = "🍥";
+
+                }
+
+
+                /*
+                作品カード
+                */
 
                 return `
 
                     <div
                         class="card"
-                        onclick="openWork('${work.id}')"
+                        onclick="openWork(${work.id})"
                     >
 
                         <div class="work-icon">
@@ -316,7 +323,6 @@ async function loadWorks() {
 
                         </div>
 
-
                         <div class="title">
 
                             ${escapeHtml(
@@ -324,7 +330,6 @@ async function loadWorks() {
                             )}
 
                         </div>
-
 
                         <div class="desc">
 
@@ -343,6 +348,10 @@ async function loadWorks() {
 }
 
 
+/* =========================
+   作品ページを開く
+========================= */
+
 function openWork(id) {
 
     location.href =
@@ -351,6 +360,10 @@ function openWork(id) {
 
 }
 
+
+/* =========================
+   HTMLエスケープ
+========================= */
 
 function escapeHtml(text) {
 
@@ -365,12 +378,18 @@ function escapeHtml(text) {
 }
 
 
+/* =========================
+   開始
+========================= */
+
 loadWorks();
 
 </script>
 
-
 </body>
 
 </html>
+
+
+
 
