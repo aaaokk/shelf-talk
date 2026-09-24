@@ -100,6 +100,16 @@ main {
     line-height: 1.6;
 }
 
+.empty {
+    color: #aaa3b5;
+    padding: 20px 0;
+}
+
+.error {
+    color: #d88;
+    padding: 20px 0;
+}
+
 footer {
     text-align: center;
     color: #777;
@@ -139,53 +149,31 @@ footer {
     </div>
 
 
-    <!-- 進撃の巨人 -->
-    <div class="card" onclick="location.href='attack.html'">
+    <!-- 漫画一覧 -->
 
-        <div class="work-icon">⚔️</div>
+    <div id="works">
 
-        <div class="title">
-            進撃の巨人
-        </div>
-
-        <div class="desc">
-            あなたの思い出を語ろう。
-        </div>
+        読み込み中……
 
     </div>
 
 
-    <!-- 鬼滅の刃 -->
-    <div class="card" onclick="location.href='demon.html'">
+    <!-- 作品追加 -->
 
-        <div class="work-icon">🗡️</div>
-
-        <div class="title">
-            鬼滅の刃
-        </div>
-
-        <div class="desc">
-            あなたの思い出を語ろう。
-        </div>
-
-    </div>
-
-
-    <!-- 作品追加用 -->
     <div class="card" onclick="location.href='add-manga.html'">
 
-    <div class="work-icon">＋</div>
+        <div class="work-icon">＋</div>
 
-    <div class="title">
-        思い出の漫画を追加する
+        <div class="title">
+            思い出の漫画を追加する
+        </div>
+
+        <div class="desc">
+            あなたの好きな漫画を追加しよう。
+        </div>
+
     </div>
 
-    <div class="desc">
-        あなたの好きな漫画を追加しよう。
-    </div>
-
-</div>
-    
 
 </main>
 
@@ -194,7 +182,316 @@ footer {
     SHELF TALK
 </footer>
 
+
+
+<!-- Supabase -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+
+const SUPABASE_URL =
+    "https://jefjskatbpylokxraznx.supabase.co";
+
+
+const SUPABASE_KEY =
+    "sb_publishable_7_jtLsbdfK6ns1HETOMcmQ_dmJutsbL";
+
+
+const supabaseClient =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+
+/*
+=================================
+漫画一覧を読み込む
+=================================
+*/
+
+async function loadWorks() {
+
+
+    const area =
+        document.getElementById("works");
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+
+            .from("works")
+
+            .select("*")
+
+            .eq(
+                "category",
+                "漫画"
+            )
+
+            .order(
+                "id",
+                {
+                    ascending: true
+                }
+            );
+
+
+
+    /*
+    エラー
+    */
+
+    if (error) {
+
+        console.error(error);
+
+        area.innerHTML = `
+
+            <div class="error">
+
+                漫画一覧を読み込めませんでした。
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+
+    /*
+    作品がない場合
+    */
+
+    if (
+        !data ||
+        data.length === 0
+    ) {
+
+        area.innerHTML = `
+
+            <div class="empty">
+
+                まだ漫画がありません。
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+
+    /*
+    作品を表示
+    */
+
+    area.innerHTML =
+
+        data.map(
+            work => {
+
+
+                /*
+                作品ごとのアイコン
+                */
+
+                let icon = "📖";
+
+
+                if (
+                    work.title ===
+                    "進撃の巨人"
+                ) {
+
+                    icon = "⚔️";
+
+                }
+
+
+                if (
+                    work.title ===
+                    "鬼滅の刃"
+                ) {
+
+                    icon = "🗡️";
+
+                }
+
+
+                if (
+                    work.title ===
+                    "ONE PIECE"
+                ) {
+
+                    icon = "🏴‍☠️";
+
+                }
+
+
+
+                /*
+                既存作品のページ
+                */
+
+                let page =
+                    "#";
+
+
+                if (
+                    work.title ===
+                    "進撃の巨人"
+                ) {
+
+                    page =
+                        "attack.html";
+
+                }
+
+
+                if (
+                    work.title ===
+                    "鬼滅の刃"
+                ) {
+
+                    page =
+                        "demon.html";
+
+                }
+
+
+
+                /*
+                作品カード
+                */
+
+                return `
+
+                    <div
+                        class="card"
+                        onclick="openWork(
+                            '${escapeHtml(work.title)}',
+                            '${page}'
+                        )"
+                    >
+
+                        <div class="work-icon">
+
+                            ${icon}
+
+                        </div>
+
+
+                        <div class="title">
+
+                            ${escapeHtml(
+                                work.title
+                            )}
+
+                        </div>
+
+
+                        <div class="desc">
+
+                            あなたの思い出を語ろう。
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+
+        ).join("");
+
+}
+
+
+
+/*
+=================================
+作品を開く
+=================================
+*/
+
+function openWork(
+    title,
+    page
+) {
+
+
+    /*
+    ページが登録されている作品
+    */
+
+    if (
+        page !== "#"
+    ) {
+
+        location.href =
+            page;
+
+        return;
+    }
+
+
+
+    /*
+    まだ専用ページがない作品
+    */
+
+    alert(
+        title +
+        "のページは準備中です。"
+    );
+
+}
+
+
+
+/*
+=================================
+HTMLエスケープ
+=================================
+*/
+
+function escapeHtml(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+
+}
+
+
+
+/*
+=================================
+開始
+=================================
+*/
+
+loadWorks();
+
+</script>
+
+
 </body>
 
-</html>この
+</html>
+
 
